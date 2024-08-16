@@ -1,21 +1,29 @@
 import React, { useState, useEffect } from "react";
-import { Text, StyleSheet, View, SafeAreaView, Image } from "react-native";
+import { Text, StyleSheet, View, SafeAreaView, Image, TouchableOpacity } from "react-native";
 
-const AboutTheAppScreen = route => {
-  const {} = route.params || {};
-  const [ImageSource, setImageSource] = useState();
+const AboutTheAppScreen = ({
+  navigation
+}) => {
+  const [ImageSource, setImageSource] = useState("https://tinyurl.com/42evm3m3");
   const [text1, setText1] = useState("");
   const [text2, setText2] = useState("");
   useEffect(() => {
     setText1("I understand that uses my dolor sit amet, consectetur adipiscing elit. Viverra auctor laoreet sodales congue sit volutpat quisque. Mattis nisl in convallis sed et. Est turpis aliquam est, ut mattis nisi, amet feugiat. Aliquet odio consequat, nisl mauris ullamcorper malesuada velit sem dolor. Dui morbi porttitor integer felis, pellentesque quam. Et accumsan justo, massa tincidunt arcu fermentum est. Sed nibh id vel, diam ut feugiat nec, placerat mauris. Neque lorem netus lacinia elit est libero sed. Commodo viverra et, neque augue augue mauris, nunc ut nec.");
     setText2("I understand that uses my dolor sit amet, consectetur adipiscing elit. Viverra auctor laoreet sodales congue sit volutpat quisque. Mattis nisl in convallis sed et. Est turpis aliquam est, ut mattis nisi, amet feugiat. Aliquet odio consequat, nisl mauris ullamcorper malesuada velit sem dolor. Dui morbi porttitor integer felis, pellentesque quam. Et accumsan justo, massa tincidunt arcu fermentum est. Sed nibh id vel, diam ut feugiat nec, placerat mauris. Neque lorem netus lacinia elit est libero sed. Commodo viverra et, neque augue augue mauris, nunc ut nec.");
-    setImageSource(require("./assets/Frame21.png"));
   }, []);
+
+  const navigateToNextPage = () => {
+    navigation.navigate('NextPage'); // Replace 'NextPage' with the actual next page name
+  };
+
   return <SafeAreaView style={styles.container}>
-      <View style={styles.imgScroller}>
-        <Image source={ImageSource} />
-        <Image style={styles.threeDots} source={require("./assets/3Dots.png")} />
-      </View>
+      <TouchableOpacity onPress={navigateToNextPage}>
+        <View style={styles.imgScroller}>
+          <Image style={styles.image} source={{
+          uri: ImageSource
+        }} />
+        </View>
+      </TouchableOpacity>
       <View style={styles.textContainer}>
         <Text style={styles.text}>{text1}</Text>
         <Text style={styles.text}>{text2}</Text>
@@ -35,8 +43,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginVertical: 20
   },
-  threeDots: {
-    marginTop: 20
+  image: {
+    width: '100%',
+    // Adjust as needed
+    height: 200,
+    // Adjust as needed
+    resizeMode: 'contain'
   },
   textContainer: {
     paddingHorizontal: 20
