@@ -2,8 +2,7 @@ import React from "react";
 import { Text, StyleSheet, View, Image, ScrollView, TouchableHighlight } from "react-native";
 
 const MediaScreen = () => {
-  return (
-    <ScrollView style={styles.container}>
+  return <ScrollView style={styles.container}>
       <View style={styles.header}>
         <Image source={require("./assets/back.png")} style={styles.back} />
         <Text style={styles.heading}>Media</Text>
@@ -37,13 +36,12 @@ const MediaScreen = () => {
       </View>
       <View style={styles.buttonContainer}>
         <Button>Upload</Button>
-        <Button backgroundColor="#fff" color="#000" borderWidth={1} >
+        <Button backgroundColor="#fff" color="#000" borderWidth={1}>
           Cancel
         </Button>
       </View>
 
-    </ScrollView>
-  );
+    </ScrollView>;
 };
 
 const styles = StyleSheet.create({
@@ -60,8 +58,17 @@ const styles = StyleSheet.create({
     marginTop: 10,
     marginBottom: 40
   },
-  back: { width: 11.25, height: 20, resizeMode: "contain", marginLeft: -20 },
-  heading: { fontSize: 16, color: "#000", marginLeft: 20 },
+  back: {
+    width: 11.25,
+    height: 20,
+    resizeMode: "contain",
+    marginLeft: -20
+  },
+  heading: {
+    fontSize: 16,
+    color: "#000",
+    marginLeft: 20
+  },
   tabView: {
     width: "65%",
     height: 48,
@@ -90,7 +97,10 @@ const styles = StyleSheet.create({
     shadowColor: "gray",
     elevation: 10
   },
-  wrapper: { justifyContent: "center", alignItems: "center" },
+  wrapper: {
+    justifyContent: "center",
+    alignItems: "center"
+  },
   centerContainer1: {
     width: 346,
     height: 168,
@@ -152,26 +162,21 @@ const styles = StyleSheet.create({
   }
 });
 
-const Button = (props) => {
-  return (
-    <TouchableHighlight onPress={props.onPress} underlayColor="#DDDDDD">
-      <View
-        style={[
-          btnStyles.button,
-          {
-            backgroundColor: props.backgroundColor ? props.backgroundColor : "#000000",
-            height: props.height ? props.height : 49,
-            borderWidth: props.borderWidth ? props.borderWidth : 0,
-            borderColor: props.borderColor ? props.borderColor : "#000000"
-          }
-        ]}
-      >
-        <Text style={[btnStyles.text, { color: props.color ? props.color : "#ffffff" }]}>
+const Button = props => {
+  return <TouchableHighlight onPress={props.onPress} underlayColor="#DDDDDD">
+      <View style={[btnStyles.button, {
+      backgroundColor: props.backgroundColor ? props.backgroundColor : "#000000",
+      height: props.height ? props.height : 49,
+      borderWidth: props.borderWidth ? props.borderWidth : 0,
+      borderColor: props.borderColor ? props.borderColor : "#000000"
+    }]}>
+        <Text style={[btnStyles.text, {
+        color: props.color ? props.color : "#ffffff"
+      }]}>
           {props.children}
         </Text>
       </View>
-    </TouchableHighlight>
-  );
+    </TouchableHighlight>;
 };
 
 const btnStyles = StyleSheet.create({
