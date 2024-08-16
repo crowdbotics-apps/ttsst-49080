@@ -13,7 +13,7 @@ const AboutTheAppScreen = ({
   }, []);
 
   const navigateToNextPage = () => {
-    navigation.navigate("NextPage"); // Replace 'NextPage' with the actual next page name
+    navigation.navigate("MediaScreen"); // Replace 'NextPage' with the actual next page name
   };
 
   return <SafeAreaView style={styles.container}>
