@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Text, StyleSheet, View, SafeAreaView, Image } from "react-native";
 
-const AboutTheAppScreen = params => {
+const AboutTheAppScreen = route => {
+  const {} = route.params || {};
   const [ImageSource, setImageSource] = useState();
   const [text1, setText1] = useState("");
   const [text2, setText2] = useState("");
