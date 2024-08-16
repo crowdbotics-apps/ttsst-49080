@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Text, StyleSheet, View, SafeAreaView, Image, TouchableOpacity } from "react-native";
+import { Text, StyleSheet, View, SafeAreaView, Image, TouchableOpacity, Button } from "react-native";
 
 const AboutTheAppScreen = ({
   navigation
@@ -13,7 +13,7 @@ const AboutTheAppScreen = ({
   }, []);
 
   const navigateToNextPage = () => {
-    navigation.navigate('NextPage'); // Replace 'NextPage' with the actual next page name
+    navigation.navigate("NextPage"); // Replace 'NextPage' with the actual next page name
   };
 
   return <SafeAreaView style={styles.container}>
@@ -27,6 +27,9 @@ const AboutTheAppScreen = ({
       <View style={styles.textContainer}>
         <Text style={styles.text}>{text1}</Text>
         <Text style={styles.text}>{text2}</Text>
+      </View>
+      <View style={styles.buttonContainer}>
+        <Button title="Next" onPress={navigateToNextPage} />
       </View>
     </SafeAreaView>;
 };
@@ -44,11 +47,9 @@ const styles = StyleSheet.create({
     marginVertical: 20
   },
   image: {
-    width: '100%',
-    // Adjust as needed
+    width: "100%",
     height: 200,
-    // Adjust as needed
-    resizeMode: 'contain'
+    resizeMode: "contain"
   },
   textContainer: {
     paddingHorizontal: 20
@@ -58,6 +59,10 @@ const styles = StyleSheet.create({
     textAlign: "justify",
     lineHeight: 18,
     marginVertical: 10
+  },
+  buttonContainer: {
+    paddingHorizontal: 20,
+    marginTop: 20
   }
 });
 export default AboutTheAppScreen;
